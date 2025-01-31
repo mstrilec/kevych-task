@@ -16,7 +16,7 @@ export default function AddTrainPage() {
 		}
 	}, [isAuthenticated, router])
 
-	const handleCreateTrain = async (data: any) => {
+	const handleCreateTrain = async (data: { name: string; departure_time: string; arrival_time: string; destination: string; status: string }) => {
 		try {
 			await api.post('/trains', data)
 			router.push('/trains')

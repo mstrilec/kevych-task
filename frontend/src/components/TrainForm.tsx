@@ -28,7 +28,7 @@ interface ITrainFormProps {
 		destination: string
 		status: string
 	} | null
-	onSubmit: (data: any) => void
+	onSubmit: (data: { name: string; departure_time: string; arrival_time: string; destination: string; status: string }) => void
 }
 
 export default function TrainForm({

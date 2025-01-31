@@ -15,7 +15,7 @@ export default function TrainsPage() {
     if (!isAuthenticated()) {
       router.push('/login');
     }
-  }, []);
+  }, [isAuthenticated, router]);
 
   return (
     <Container>
