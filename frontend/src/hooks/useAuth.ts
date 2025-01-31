@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import api from '../services/api'
+import Cookies from 'js-cookie';
 
 export const useAuth = () => {
 	const [error, setError] = useState<string | null>(null)
@@ -7,7 +8,7 @@ export const useAuth = () => {
 	const login = async (email: string, password: string) => {
 		try {
 			const response = await api.post('/auth/login', { email, password })
-			localStorage.setItem('token', response.data.access_token)
+			Cookies.set('token', response.data.access_token)
 			setError(null)
 		} catch (err) {
 			console.log(err)
@@ -22,7 +23,7 @@ export const useAuth = () => {
 				password,
 				name,
 			})
-			localStorage.setItem('token', response.data.access_token)
+			Cookies.set('token', response.data.access_token)
 			setError(null)
 		} catch (err) {
 			console.log(err)
@@ -31,10 +32,10 @@ export const useAuth = () => {
 	}
 
 	const logout = () => {
-		localStorage.removeItem('token')
+		Cookies.remove('token')
 	}
 
-	const isAuthenticated = () => !!localStorage.getItem('token')
+	const isAuthenticated = () => !!Cookies.get('token')
 
 	return { login, register, logout, error, isAuthenticated }
 }
