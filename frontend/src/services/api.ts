@@ -1,8 +1,8 @@
 import axios from 'axios'
-import Cookies from 'js-cookie';
+import Cookies from 'js-cookie'
 
 const api = axios.create({
-	baseURL: 'http://localhost:5000',
+	baseURL: 'https://kevych-task.onrender.com',
 })
 
 api.interceptors.request.use(config => {
