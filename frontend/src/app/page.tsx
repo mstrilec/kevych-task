@@ -18,7 +18,7 @@ export default function Home() {
 					textAlign: 'center',
 				}}
 			>
-				<Typography variant='h2' fontWeight='bold' gutterBottom>
+				<Typography color='#000' variant='h2' fontWeight='bold' gutterBottom>
 					Ласкаво просимо!
 				</Typography>
 				<Typography variant='h5' color='text.secondary' gutterBottom>
