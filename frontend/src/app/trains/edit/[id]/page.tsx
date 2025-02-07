@@ -12,6 +12,8 @@ export default function EditTrainPage() {
 	const { id } = useParams()
 	const [train, setTrain] = useState(null)
 
+	const authCheck = isAuthenticated()
+
 	useEffect(() => {
 		const fetchTrain = async () => {
 			try {
@@ -22,12 +24,12 @@ export default function EditTrainPage() {
 			}
 		}
 
-		if (!isAuthenticated()) {
+		if (!authCheck) {
 			router.push('/login')
 		} else {
 			fetchTrain()
 		}
-	}, [isAuthenticated, id, router])
+	}, [id, router, authCheck])
 
 	const handleUpdateTrain = async (data: {
 		[key: string]: string | number | boolean
